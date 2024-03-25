@@ -1,8 +1,11 @@
 import type { PageLoad } from './$types';
 
 export type Vendor = {
-  id: number;
+  id: string;
   name: string;
+  contact: string;
+  email: string;
+  phone: string;
   create_at: string;
 };
 
@@ -45,12 +48,18 @@ export const load: PageLoad = () => {
   const vendors: Vendor[] = [
     {
       id: 1,
-      name: 'Vendor 1',
+      name: 'Maddocks Systems Inc.',
+      contact: 'Bob',
+      email: 'bob@example.com',
+      phone: '123-456-7890',
       create_at: '2021-01-21',
     },
     {
       id: 2,
-      name: 'Vendor 2',
+      name: 'Lynx Transportation Systems',
+      contact: 'Randall',
+      email: 'randall@example.com',
+      phone: '123-456-7890',
       create_at: '2021-01-01',
     },
   ];
