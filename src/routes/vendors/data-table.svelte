@@ -11,41 +11,10 @@
   import { Button } from "$lib/components/ui/button";
   import { Input } from "$lib/components/ui/input";
 
-  import type { Payment } from "./$types";
+  import type { Payment } from "./+page";
 
   export let payments: Payment[] = [];
-
   
-
-
-  // type Payment = {
-  //   id: string;
-  //   amount: number;
-  //   status: "pending" | "processing" | "success" | "failed";
-  //   email: string;
-  // };
- 
-  // const data: Payment[] = [
-  //   {
-  //     id: "m5gr84i9",
-  //     amount: 16.8,
-  //     status: "success",
-  //     email: "ken99@yahoo.com",
-  //   },
-  //   {
-  //     id: "amount",
-  //     amount: 1316.09,
-  //     status: "success",
-  //     email: "bill99@yahoo.com",
-  //   },
-  //   {
-  //     id: "m5gr54i9",
-  //     amount: 416,
-  //     status: "success",
-  //     email: "bob99@yahoo.com",
-  //   },
-  // ];
-
   const table = createTable(readable(payments), {
     page: addPagination(),
     sort: addSortBy({ disableMultiSort: true }),

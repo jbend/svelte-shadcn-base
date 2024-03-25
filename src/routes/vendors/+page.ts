@@ -16,18 +16,6 @@ export type Payment = {
 export const load: PageLoad = () => {
 
   const payments: Payment[] = [
-   {
-      id: "m5gr84i9",
-      amount: 16.8,
-      status: "success",
-      email: "ken99@yahoo.com",
-    },
-    {
-      id: "m5gr54i9",
-      amount: 416,
-      status: "success",
-      email: "bob99@yahoo.com",
-    },
     {
       id: "m5gr54i9",
       amount: 416,
