@@ -2,15 +2,17 @@
   import Ellipsis from "lucide-svelte/icons/ellipsis";
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
   import { Button } from "$lib/components/ui/button";
+  import { invoke } from '@tauri-apps/api/tauri';
  
   export let id: string;
 
-  const handleViewCustomer = () => {
-    console.log(`View customer ${id}`);
+  const handleViewVendor = () => {
+    console.log(`View vendor ${id}`);
   };
 
-  const handleViewPaymentDetails = () => {
-    console.log(`View payment details ${id}`);
+  const handleDeleteVendor = async () => {
+    console.log(`Delete vendor: ${id}`);
+    await invoke('delete_vendor', { vendorId: id });
   };
 </script>
  
@@ -34,7 +36,7 @@
       </DropdownMenu.Item>
     </DropdownMenu.Group>
     <DropdownMenu.Separator />
-    <DropdownMenu.Item on:click={handleViewCustomer}>View customer</DropdownMenu.Item>
-    <DropdownMenu.Item on:click={handleViewPaymentDetails}>View payment details</DropdownMenu.Item>
+    <DropdownMenu.Item on:click={handleViewVendor}>View vendor</DropdownMenu.Item>
+    <DropdownMenu.Item on:click={handleDeleteVendor}>Delete vendor</DropdownMenu.Item>
   </DropdownMenu.Content>
 </DropdownMenu.Root>

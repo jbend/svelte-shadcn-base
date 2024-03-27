@@ -10,7 +10,8 @@ pub fn init() {
 // TODO: any initialization logic???
 }
 
-pub fn create_vendor(new_vendor: &NewVendor) {
+// pub fn create_vendor(new_vendor: &NewVendor) {
+pub fn create_vendor(new_vendor: &Vendor) {
   let connection = &mut establish_db_connection();
   diesel::insert_into(vendor::table)
     .values(new_vendor)
@@ -18,15 +19,15 @@ pub fn create_vendor(new_vendor: &NewVendor) {
     .expect("Error saving new vendor");
 }
 
-// pub fn list_vendors() -> Vec<Vendor> {
-//   let connection = &mut establish_db_connection();
+pub fn list_vendors() -> Vec<Vendor> {
+  let connection = &mut establish_db_connection();
 
-//   dsl::vendor
-//     .order_by(dsl::name.desc())
-//     .load::<Vendor>(connection)
-//     .expect("Error loading vendors")
+  dsl::vendor
+    .order_by(dsl::name.desc())
+    .load::<Vendor>(connection)
+    .expect("Error loading vendors")
 
-// }
+}
 
 // pub fn get_vendor(id: &str) -> Option<Vendor> {
 //   let connection = &mut establish_db_connection();

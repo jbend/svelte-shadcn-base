@@ -4,8 +4,8 @@
   import { readable } from "svelte/store";
   import * as Table from "$lib/components/ui/table";
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
-  import DataTableActions from "./data-table-actions.svelte";
-  import DataTableCheckbox from "./data-table-checkbox.svelte";
+  import DataTableActions from "./vendor-table-actions.svelte";
+  import DataTableCheckbox from "./vendor-table-checkbox.svelte";
   import ArrowUpDown from "lucide-svelte/icons/arrow-up-down";
   import ChevronDown from "lucide-svelte/icons/chevron-down";
   import { Button } from "$lib/components/ui/button";

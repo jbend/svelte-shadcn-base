@@ -26,7 +26,7 @@
 			<li><a class="hover:underline" href="/vendors">Vendors</a></li>
 		</ol>
 	</aside>
-	<main>
+	<main class="container">
 		<slot></slot>
 	</main>
 </div>
