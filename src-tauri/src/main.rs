@@ -25,7 +25,8 @@ fn main() {
     .invoke_handler(
       tauri::generate_handler![
         list_vendors,
-        // get_vendor,
+        get_vendor,
+        update_vendor,
         create_vendor,
         delete_vendor
       ]

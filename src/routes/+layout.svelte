@@ -1,17 +1,19 @@
 <script>
 	import "../app.pcss";
-  // import './styles.css';
 
 	import { ModeWatcher } from "mode-watcher";
 
 	import { Separator } from "$lib/components/ui/separator";
+	import { Toaster } from "$lib/components/ui/sonner";
 
 	import Header from "$lib/components//Header.svelte";
 	import Footer from "$lib/components//Footer.svelte";
 
+
 </script>
 
 <ModeWatcher />
+<Toaster />
 
 <Header />
 <Separator class="my-2" />

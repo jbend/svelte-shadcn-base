@@ -22,11 +22,15 @@ export type Payment = {
   email: string;
 };
 
-export const load: PageLoad = async () => {
+export const load: PageLoad = async ({ depends }) => {
+
+  console.log('vendors page load');
 
   const createVendorForm = await superValidate(zod(formSchema));
 
   const vendors: Vendor[] = await invoke('list_vendors');
+
+  depends('app:vendors');
 
 	return {
     vendors,

@@ -4,6 +4,7 @@
   import { Input } from "$lib/components/ui/input/index.js";
   import { Label } from "$lib/components/ui/label/index.js";
   import CirclePlus from "lucide-svelte/icons/circle-plus";
+  import { vendorSheetOpen } from "./store";
 
   import * as Form from "$lib/components/ui/form";
   import { formSchema, type FormSchema } from "./schema";
@@ -33,6 +34,8 @@
       phone: data.phone
     }
     const result = await invoke('create_vendor', { vendorArg: vendor });
+
+    vendorSheetOpen.set(false)
     console.log("Result:", result);
     // goto('/vendors');
 	}
@@ -40,9 +43,7 @@
   const { form: formData, enhance } = form;
 
 </script>
- 
-
-<Sheet.Root>
+<Sheet.Root bind:open={$vendorSheetOpen}>
   <Sheet.Trigger asChild let:builder>
     <Button builders={[builder]} variant="outline">
       <CirclePlus class="h-4 w-4 mr" />  
@@ -65,7 +66,7 @@
         <Form.Description>This is your public display name.</Form.Description>
         <Form.FieldErrors />
       </Form.Field>
-    
+  
       <Form.Field {form} name="contact">
         <Form.Control let:attrs>
           <Form.Label>Contact</Form.Label>
@@ -74,7 +75,7 @@
         <Form.Description>Person you typically communicate with</Form.Description>
         <Form.FieldErrors />
       </Form.Field>
-    
+  
       <Form.Field {form} name="email">
         <Form.Control let:attrs>
           <Form.Label>Email</Form.Label>
@@ -95,10 +96,5 @@
       <Form.Button class="mt-4">Save</Form.Button>
     </form>
 
-    <!-- <Sheet.Footer>
-      <Sheet.Close asChild let:builder>
-        <Button builders={[builder]} type="submit">Save changes</Button>
-      </Sheet.Close>
-    </Sheet.Footer> -->
   </Sheet.Content>
 </Sheet.Root>

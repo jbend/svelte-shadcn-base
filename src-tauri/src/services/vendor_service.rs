@@ -29,15 +29,15 @@ pub fn list_vendors() -> Vec<Vendor> {
 
 }
 
-// pub fn get_vendor(id: &str) -> Option<Vendor> {
-//   let connection = &mut establish_db_connection();
+pub fn get_vendor(id: &str) -> Option<Vendor> {
+  let connection = &mut establish_db_connection();
 
-//   dsl::vendor
-//     .find(id)
-//     .first(connection)
-//     .optional()
-//     .expect("Error loading vendor")
-// }
+  dsl::vendor
+    .find(id)
+    .first(connection)
+    .optional()
+    .expect("Error loading vendor")
+}
 
 pub fn update_vendor(id: &str, new_name: &str) {
   let connection = &mut establish_db_connection();
