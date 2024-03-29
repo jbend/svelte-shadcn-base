@@ -29,6 +29,16 @@ pub fn list_vendors() -> Vec<Vendor> {
 
 }
 
+pub fn count_vendors() -> i64 {
+  let connection = &mut establish_db_connection();
+
+  dsl::vendor
+    .count()
+    .get_result(connection)
+    .expect("Error counting vendors")
+
+}
+
 pub fn get_vendor(id: &str) -> Option<Vendor> {
   let connection = &mut establish_db_connection();
 

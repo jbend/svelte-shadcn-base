@@ -14,6 +14,13 @@
     console.log(`Delete vendor: ${id}`);
     await invoke('delete_vendor', { vendorId: id });
   };
+
+  const handleCreateVendorPO = async () => {
+    console.log(`Create new PO from this vendor ${id}`);
+    // await invoke('delete_vendor', { vendorId: id });
+  };
+
+  
 </script>
  
 <DropdownMenu.Root>
@@ -31,6 +38,7 @@
   <DropdownMenu.Content>
     <DropdownMenu.Group>
       <DropdownMenu.Label>Actions</DropdownMenu.Label>
+      <DropdownMenu.Item on:click={handleCreateVendorPO}>Create new PO for this vendor</DropdownMenu.Item>
       <DropdownMenu.Item on:click={() => navigator.clipboard.writeText(id)}>
         Copy payment ID
       </DropdownMenu.Item>

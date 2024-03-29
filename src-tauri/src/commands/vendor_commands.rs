@@ -14,6 +14,11 @@ pub fn get_vendor(id: String) -> Option<Vendor> {
 }
 
 #[tauri::command]
+pub fn count_vendors() -> i64 {
+    vendor_service::count_vendors()
+}
+
+#[tauri::command]
 pub fn create_vendor(app_handle: tauri::AppHandle, vendor_arg: CreateVendor) -> Vendor {
 
     print!("new_vendor: {:?}", vendor_arg);

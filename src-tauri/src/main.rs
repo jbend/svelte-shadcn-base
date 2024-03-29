@@ -26,6 +26,7 @@ fn main() {
       tauri::generate_handler![
         list_vendors,
         get_vendor,
+        count_vendors,
         update_vendor,
         create_vendor,
         delete_vendor
