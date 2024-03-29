@@ -4,18 +4,18 @@
   import { readable } from "svelte/store";
   import * as Table from "$lib/components/ui/table";
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
-  import DataTableActions from "./data-table-actions.svelte";
-  import DataTableCheckbox from "./data-table-checkbox.svelte";
+  import DataTableActions from "./vendor-table-actions.svelte";
+  import DataTableCheckbox from "./vendor-table-checkbox.svelte";
   import ArrowUpDown from "lucide-svelte/icons/arrow-up-down";
   import ChevronDown from "lucide-svelte/icons/chevron-down";
   import { Button } from "$lib/components/ui/button";
   import { Input } from "$lib/components/ui/input";
 
-  import type { Payment } from "./+page";
+  import type { Vendor } from "./+page";
 
-  export let payments: Payment[] = [];
+  export let vendors: Vendor[] = [];
   
-  const table = createTable(readable(payments), {
+  const table = createTable(readable(vendors), {
     page: addPagination(),
     sort: addSortBy({ disableMultiSort: true }),
     filter: addTableFilter({
@@ -53,40 +53,48 @@
       },      
     }),
     table.column({
-      accessor: "status",
-      header: "Status",
-      plugins: {
-        sort: {
-          disable: true,
-        },
-        filter: {
-          exclude: true,
-        },
-      },
+      accessor: "name",
+      header: "Name",
+      // plugins: {
+      //   sort: {
+      //     disable: true,
+      //   },
+      //   filter: {
+      //     exclude: true,
+      //   },
+      // },
+    }),
+    table.column({
+      accessor: "contact",
+      header: "Contact",
     }),
     table.column({
       accessor: "email",
       header: "Email",
     }),
     table.column({
-      accessor: "amount",
-      header: "Amount",
-      cell: ({ value }) => {
-        const formatted = new Intl.NumberFormat("en-US", {
-          style: "currency",
-          currency: "USD",
-        }).format(value);
-        return formatted;
-      },
-      plugins: {
-        sort: {
-          disable: true,
-        },
-        filter: {
-          exclude: true,
-        },
-      },
+      accessor: "phone",
+      header: "Phone",
     }),
+    // table.column({
+    //   accessor: "amount",
+    //   header: "Amount",
+    //   cell: ({ value }) => {
+    //     const formatted = new Intl.NumberFormat("en-US", {
+    //       style: "currency",
+    //       currency: "USD",
+    //     }).format(value);
+    //     return formatted;
+    //   },
+    //   plugins: {
+    //     sort: {
+    //       disable: true,
+    //     },
+    //     filter: {
+    //       exclude: true,
+    //     },
+    //   },
+    // }),
     table.column({
       accessor: ({ id }) => id,
       header: "",
@@ -123,7 +131,7 @@
     .filter(([, hide]) => !hide)
     .map(([id]) => id);
  
-  const hidableCols = ["status", "email", "amount"];
+  const hidableCols = ["email", "phone"];
 
 </script>
 
@@ -167,18 +175,7 @@
                   let:props
                   >
                   <Table.Head {...attrs} class="[&:has([role=checkbox])]:pl-3">
-                    {#if cell.id === "amount"}
-                      <div class="text-right">
-                        <Render of={cell.render()} />
-                      </div>
-                    {:else if cell.id === "email"}
-                      <Button variant="ghost" on:click={props.sort.toggle}>
-                        <Render of={cell.render()} />
-                        <ArrowUpDown class={"ml-2 h-4 w-4"} />
-                      </Button>                      
-                    {:else}
-                      <Render of={cell.render()} />
-                    {/if}                  
+                    <Render of={cell.render()} />
                   </Table.Head>
                 </Subscribe>
               {/each}
@@ -196,17 +193,8 @@
               {#each row.cells as cell (cell.id)}
                 <Subscribe attrs={cell.attrs()} let:attrs>
                   <Table.Cell {...attrs}>
-                    {#if cell.id === "amount"}
-                      <div class="text-right font-medium">
-                        <Render of={cell.render()} />
-                      </div>
-                    {:else if cell.id === "status"}
-                      <div class="capitalize">
-                        <Render of={cell.render()} />
-                      </div>
-                    {:else}
-                      <Render of={cell.render()} />
-                    {/if}                </Table.Cell>
+                    <Render of={cell.render()} />
+                  </Table.Cell>
                 </Subscribe>
               {/each}
             </Table.Row>
@@ -224,13 +212,11 @@
       variant="outline"
       size="sm"
       on:click={() => ($pageIndex = $pageIndex - 1)}
-      disabled={!$hasPreviousPage}>Previous</Button
-    >
+      disabled={!$hasPreviousPage}>Previous</Button>
     <Button
       variant="outline"
       size="sm"
       disabled={!$hasNextPage}
-      on:click={() => ($pageIndex = $pageIndex + 1)}>Next</Button
-    >
+      on:click={() => ($pageIndex = $pageIndex + 1)}>Next</Button>
   </div>
 </div>

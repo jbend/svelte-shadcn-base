@@ -9,13 +9,15 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"test": "vitest",
 		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"db:reset": "rm -f ./ordo.sqlite && touch ./ordo.sqlite && diesel migration run"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/adapter-static": "^3.0.1",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
+		"@tauri-apps/cli": "^1.5.11",
 		"@types/eslint": "^8.56.0",
 		"@typescript-eslint/eslint-plugin": "^7.0.0",
 		"@typescript-eslint/parser": "^7.0.0",
@@ -39,11 +41,16 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@tauri-apps/api": "^1.5.3",
 		"bits-ui": "^0.20.0",
 		"clsx": "^2.1.0",
+		"formsnap": "^0.5.1",
 		"lucide-svelte": "^0.363.0",
 		"mode-watcher": "^0.3.0",
+		"svelte-sonner": "^0.3.19",
+		"sveltekit-superforms": "^2.11.0",
 		"tailwind-merge": "^2.2.2",
-		"tailwind-variants": "^0.2.1"
+		"tailwind-variants": "^0.2.1",
+		"zod": "^3.22.4"
 	}
 }

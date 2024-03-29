@@ -36,3 +36,38 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+## Setup Shadcn
+
+## Setup Tauri
+
+### Run 
+
+```sh
+# run from /src-tauri 
+cargo watch -q -c -w src/ -x clippy
+```
+
+## Setup Deisel
+
+### Add migration
+
+```sh
+diesel migration generate vendor
+diesel migration generate purchase_order
+```
+
+### Run migration
+
+```sh
+diesel migration run
+
+```
+
+
+
+
+
+
+
+
