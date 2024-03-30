@@ -12,7 +12,7 @@
   }
 
   const handleEditJob = () => {
-    console.log("Delete job", id);
+    console.log("Edit job", id);
     deleteJob(id);
   }
 

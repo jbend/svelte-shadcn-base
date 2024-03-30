@@ -7,14 +7,13 @@ export const prerender = true;
 
 export const load: PageLoad = async ({ depends }) => {
 
-  console.log('root page load');
-
-  
-  const vendorCount: number = await invoke('count_vendors');
+  const countVendors: number = await invoke('count_vendors');
+  const countJobs: number = await invoke('count_jobs');
 
   depends('app:root');
 
 	return {
-    vendorCount,
+    countVendors,
+    countJobs,
 	};
 };

@@ -25,7 +25,6 @@
 	const createVendorForm = data?.createVendorForm ?? {};
 
 	onMount(async () => {
-		console.log('The Vendors are mounted');
 
 		await listen('vendor_deleted', async () => {
   	  console.log('Vendor deleted');

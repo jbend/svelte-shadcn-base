@@ -9,10 +9,10 @@
   import CirclePlus from "lucide-svelte/icons/circle-plus";
 
   import * as Form from "$lib/components/ui/form";
-  import { createJobSchema, type FormSchema } from "./schema";
+  import { createJobSchema, type CreateJobSchema } from "./schema";
   import { zodClient } from "sveltekit-superforms/adapters";
-  import { invoke } from '@tauri-apps/api/tauri';
-  import { createJobDialogOpen } from './store';
+  import { createJobDialogOpen, createJob } from './store';
+  import type { CreateJob } from './models';
 
   import {
     type SuperValidated,
@@ -20,7 +20,7 @@
     superForm,
   } from "sveltekit-superforms";
 
-  export let createJobForm: SuperValidated<Infer<FormSchema>>;
+  export let createJobForm: SuperValidated<Infer<CreateJobSchema>>;
 
   const form = superForm(createJobForm, {
     validators: zodClient(createJobSchema),
@@ -30,10 +30,11 @@
 		const data = Object.fromEntries(new FormData(event.currentTarget).entries());
 
     console.log("Data:", JSON.stringify(data));
-    const job = {
-      name: data.name,
+    const job: CreateJob = {
+      name: data.name.toString(),
     }
-    const result = await invoke('create_job', { jobArg: job });
+    createJob(job);
+    // const result = await invoke('create_job', { jobArg: job });
     createJobDialogOpen.set(false);
 	}
 

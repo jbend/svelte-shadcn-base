@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-  import { createJobDialogOpen } from './store';
+  // import { createJobDialogOpen } from './store';
   import { listen } from '@tauri-apps/api/event';
-	import { invoke } from '@tauri-apps/api/tauri';
+	// import { invoke } from '@tauri-apps/api/tauri';
   import { toast } from "svelte-sonner";
   import { Button } from "$lib/components/ui/button";
 
@@ -10,8 +10,8 @@
   import NewJobDialog from "./new-job-dialog.svelte";
 
 	import type { PageData } from './$types';
-	import type { Job } from './models';
-	import { addJob, refreshJobs } from './store';
+	// import type { Job } from './models';
+	import { refreshJobs } from './store';
 	
 	export let data: PageData;
 
@@ -32,20 +32,15 @@
       refreshJobs();
 	  });
 
+		await listen('job_updated', async () => {
+			toast("Job updated");
+      refreshJobs();
+	  });
+
   });
 
   const onRefresh = async () => {
     refreshJobs();
-  }
-
-  const onAddJob = () => {
-    let newJob = {
-      id: "Job 8",
-      name: "New Job",
-      active: true,
-      favorite: false,
-    }
-    addJob(newJob);
   }
 
 </script>
@@ -65,7 +60,6 @@
 	</div>
 
   <div class="mt-4">
-    <Button on:click={onAddJob} variant="outline">Add Job</Button>
     <Button on:click={onRefresh} variant="outline">Refresh</Button>
   </div>
 

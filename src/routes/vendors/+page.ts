@@ -24,8 +24,6 @@ export type Payment = {
 
 export const load: PageLoad = async ({ depends }) => {
 
-  console.log('vendors page load');
-
   const createVendorForm = await superValidate(zod(formSchema));
 
   const vendors: Vendor[] = await invoke('list_vendors');

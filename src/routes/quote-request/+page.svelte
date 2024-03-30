@@ -7,6 +7,6 @@
   </svelte:head>
   
   <section>
-    <h1 class="text-xl">Purchase Orders</h1>
+    <h1 class="text-xl">Quote request</h1>
   </section>
   

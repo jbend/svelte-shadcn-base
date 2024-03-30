@@ -22,7 +22,7 @@
 		<ol class="text-sm space-y-2">
 			<li><a class="hover:underline" href="/">Dashboard</a></li>
 			<li><a class="hover:underline" href="/jobs">Jobs</a></li>
-			<li><a class="hover:underline" href="/purchase_orders">Purchase Orders</a></li>
+			<li><a class="hover:underline" href="/quote-request">Quote request</a></li>
 		</ol>
 		<Separator class="my-4" />
 		<ol class="text-sm space-y-2">
