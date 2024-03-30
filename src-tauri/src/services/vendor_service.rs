@@ -1,14 +1,14 @@
 use crate::{
   db::establish_db_connection, 
-  models::vendor::{NewVendor, Vendor}, 
+  models::vendor::Vendor, 
   schema::vendor,
   schema::vendor::dsl
 };
 use diesel::prelude::*;
 
-pub fn init() {
-// TODO: any initialization logic???
-}
+// pub fn init() {
+// // TODO: any initialization logic???
+// }
 
 // pub fn create_vendor(new_vendor: &NewVendor) {
 pub fn create_vendor(new_vendor: &Vendor) {

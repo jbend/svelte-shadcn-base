@@ -21,6 +21,7 @@
 	<aside class="p-4 w-48">
 		<ol class="text-sm space-y-2">
 			<li><a class="hover:underline" href="/">Dashboard</a></li>
+			<li><a class="hover:underline" href="/jobs">Jobs</a></li>
 			<li><a class="hover:underline" href="/purchase_orders">Purchase Orders</a></li>
 		</ol>
 		<Separator class="my-4" />

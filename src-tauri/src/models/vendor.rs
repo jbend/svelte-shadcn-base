@@ -34,26 +34,3 @@ pub struct NewVendor<'a> {
     pub phone: Option<&'a str>,
     // pub created_at: NaiveDateTime,
 }
-
-
-// #[derive()]
-// #[diesel(table_name = vendor)]
-// pub struct UpdateVendor {
-//     pub id: String,
-//     pub name: String,
-//     pub created_at: NaiveDateTime,
-// }
-
-// impl From<NewVendor> for Vendor {
-//     fn from(new_vendor: NewVendor) -> Self {
-//         Vendor {
-//             id: new_vendor.id,
-//             name: new_vendor.name,
-//             contact: Some(new_vendor.contact),
-//             email: Some(new_vendor.email),
-//             phone: Some(new_vendor.phone),
-//             created_at: new_vendor.created_at,
-//         }
-//     }
-// }
-

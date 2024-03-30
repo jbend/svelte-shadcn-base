@@ -1,4 +1,4 @@
-use crate::models::vendor::{NewVendor, CreateVendor, Vendor};
+use crate::models::vendor::{CreateVendor, Vendor};
 use crate::services::vendor_service;
 use tauri::Manager;
 use uuid::Uuid;
@@ -38,6 +38,7 @@ pub fn create_vendor(app_handle: tauri::AppHandle, vendor_arg: CreateVendor) -> 
 
 #[tauri::command]
 pub fn update_vendor(app_handle: tauri::AppHandle, vendor_id: String) {
+    print!("vendor_id: {:?}", vendor_id);
     // vendor_service::delete_vendor(vendor_id.clone());
     app_handle.emit_all("vendor_updated", ()).unwrap();
 }

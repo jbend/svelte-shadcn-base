@@ -54,7 +54,8 @@ cargo watch -q -c -w src/ -x clippy
 
 ```sh
 diesel migration generate vendor
-diesel migration generate purchase_order
+diesel migration generate jobs
+diesel migration generate vendors
 ```
 
 ### Run migration
